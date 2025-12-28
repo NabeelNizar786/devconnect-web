@@ -1,1 +1,1 @@
-export const BASE_URL = location.pathname == "/api";
+export const BASE_URL = "/api";
