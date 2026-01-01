@@ -24,7 +24,7 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
             # Go to frontend folder
-            cd /home/ubuntu/devconnect-frontend
+            cd /home/ubuntu/devconnect-web
 
             # Pull latest code
             git pull origin main
