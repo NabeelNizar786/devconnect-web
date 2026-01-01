@@ -39,4 +39,4 @@ jobs:
             sudo scp -r dist/* /var/www/html/
 
             # Optional: reload Nginx (if needed)
-            sudo systemctl reload nginx
+            sudo systemctl restart nginx
