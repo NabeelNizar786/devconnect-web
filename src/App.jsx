@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/protectedRoutes";
 import PublicRoute from "./components/publicRoutes";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import Premium from "./components/Premium";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/connections" element={<Connections />} />
                 <Route path="/requests" element={<Requests />} />
+                <Route path="/premium" element={<Premium />} />
               </Route>
             </Route>
           </Routes>

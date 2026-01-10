@@ -37,8 +37,10 @@ const Feed = () => {
 
   if (feed.length <= 0)
     return (
-      <div className="flex justify-center my-10">
-        <h1 className="text-bold text-2xl">No More Users Available RightNow</h1>
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <h1 className="text-xl text-gray-400">
+          No More Users Available Right Now
+        </h1>
       </div>
     );
 

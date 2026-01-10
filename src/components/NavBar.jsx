@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { store } from "../utils/appStore";
 import { Link, useNavigate } from "react-router";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
@@ -19,52 +18,73 @@ const NavBar = () => {
       dispatch(removeFeed());
       navigate("/login");
     } catch (error) {
-      console.error("error");
+      console.error("Logout failed");
     }
   };
+
   return (
-    <div className="navbar bg-base-300 shadow-sm">
-      <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          DevConnect
-        </Link>
-      </div>
-      {user && (
-        <div className="flex gap-2">
-          <div className="form-control my-2">Welcome, {user.firstName}</div>
-          <div className="dropdown dropdown-end mx-5">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-10 rounded-full">
-                <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
-              </div>
-            </div>
-            <ul
-              tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <Link to="/profile" className="justify-between">
-                  Profile
-                </Link>
-              </li>
-              <li>
-                <Link to="/connections">Connections</Link>
-              </li>
-              <li>
-                <Link to="/requests">Requests</Link>
-              </li>
-              <li>
-                <a onClick={handleLogout}>Logout</a>
-              </li>
-            </ul>
-          </div>
+    <header className="sticky top-0 z-50">
+      <div className="navbar bg-base-100/80 backdrop-blur border-b border-base-300 px-6">
+        {/* Left: Brand */}
+        <div className="flex-1">
+          <Link
+            to="/"
+            className="text-xl font-bold tracking-tight hover:text-primary transition"
+          >
+            Dev<span className="text-primary">Connect</span>
+          </Link>
         </div>
-      )}
-    </div>
+
+        {/* Right: User */}
+        {user && (
+          <div className="flex items-center gap-4">
+            {/* User name */}
+            <div className="hidden sm:flex flex-col text-right leading-tight">
+              <span className="text-sm font-medium">{user.firstName}</span>
+              <span className="text-xs text-base-content/60">Developer</span>
+            </div>
+
+            {/* Avatar Dropdown */}
+            <div className="dropdown dropdown-end">
+              <label
+                tabIndex={0}
+                className="btn btn-ghost btn-circle avatar hover:bg-base-200"
+              >
+                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img alt="User avatar" src={user.photoUrl} />
+                </div>
+              </label>
+
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 w-56 rounded-xl bg-base-100 p-2 shadow-xl"
+              >
+                <li>
+                  <Link to="/profile">👤 Profile</Link>
+                </li>
+                <li>
+                  <Link to="/connections">🤝 Connections</Link>
+                </li>
+                <li>
+                  <Link to="/requests">📩 Requests</Link>
+                </li>
+                <li>
+                  <Link to="/premium">⭐ Premium</Link>
+                </li>
+
+                <div className="divider my-1" />
+
+                <li>
+                  <button onClick={handleLogout} className="text-error">
+                    🚪 Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
   );
 };
 
